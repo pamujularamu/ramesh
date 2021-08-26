@@ -1,0 +1,13 @@
+node {
+    
+          stage('pulling from the github'){
+          git branch: 'remo1', credentialsId: 'git', url: 'https://github.com/ramupamujula143/dempoproject1.git'
+          }
+          stage('build the code'){
+          sh 'mvn clean install'
+          }
+          stage('moving war to webapps'){
+         sh '''cp -rf /var/lib/jenkins/workspace/sample-script/target/WebApp /opt/apache-tomcat-8.5.69/webapps/'''
+         }
+          
+    }
